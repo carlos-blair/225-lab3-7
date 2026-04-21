@@ -5,7 +5,7 @@ pipeline {
         DOCKER_CREDENTIALS_ID = 'roseaw-dockerhub'
         DOCKER_IMAGE = 'cithit/blairc'                                                                    //<------your MiamiID
         IMAGE_TAG = "build-${BUILD_NUMBER}"
-        GITHUB_URL = 'https://github.com/carlos-blair/225-lab3-7.git'                                    //<------your MiamiID
+        GITHUB_URL = 'https://github.com/parbatisapkota/225-lab3-7.git'                                    //<------your MiamiID
         KUBECONFIG = credentials('blairc-225-sp26')                                                         //<------your MiamiID
     }
 
@@ -76,7 +76,7 @@ pipeline {
                 sh 'docker pull public.ecr.aws/portswigger/dastardly:latest'
                 sh '''
                     docker run --user $(id -u) -v ${WORKSPACE}:${WORKSPACE}:rw \
-                    -e BURP_START_URL=http://10.48.229.127 \
+                    -e BURP_START_URL=http://10.48.229.186 \
                     -e BURP_REPORT_FILE_PATH=${WORKSPACE}/dastardly-report.xml \
                     public.ecr.aws/portswigger/dastardly:latest
                 '''
@@ -119,4 +119,3 @@ pipeline {
         }
     }
 }
-
